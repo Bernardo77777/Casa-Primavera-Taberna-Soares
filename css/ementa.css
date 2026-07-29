@@ -1,0 +1,116 @@
+/* ===== Ementa (página dedicada para QR code) ===== */
+
+body.menu-page {
+    background: var(--color-bg);
+}
+
+.menu-hero {
+    position: relative;
+    background: var(--color-primary-dark);
+    background-image: radial-gradient(circle at 50% -20%, rgba(201, 143, 43, .18), transparent 60%);
+    padding: 44px 20px 36px;
+    text-align: center;
+}
+
+.lang-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: .78rem;
+    letter-spacing: .05em;
+    cursor: pointer;
+    transition: background .18s ease;
+}
+.lang-toggle:hover { background: rgba(255, 255, 255, .18); }
+
+.menu-hero-logo {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, .85);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+    margin: 0 auto 16px;
+}
+
+.menu-hero-title {
+    color: #fff;
+    font-size: clamp(1.7rem, 6vw, 2.3rem);
+    margin: 0;
+}
+
+.menu-hero-subtitle {
+    margin: 6px 0 0;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: .8rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+}
+
+.menu-page-main { padding: 40px 0 70px; }
+
+@keyframes menuHeroEnter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.menu-hero-logo, .menu-hero-title, .menu-hero-subtitle {
+    opacity: 0;
+    animation: menuHeroEnter .7s ease forwards;
+}
+.menu-hero-logo { animation-delay: .1s; }
+.menu-hero-title { animation-delay: .25s; }
+.menu-hero-subtitle { animation-delay: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-hero-logo, .menu-hero-title, .menu-hero-subtitle {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.menu-page-main .menu-tabs { margin-bottom: 2em; }
+
+.menu-list-detailed .menu-item-detailed {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 14px 4px;
+}
+
+.menu-item-top {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.menu-item-desc {
+    margin: 0;
+    font-size: .85rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+}
+
+.menu-back-link {
+    display: block;
+    width: fit-content;
+    margin: 2.5em auto 0;
+    color: var(--color-muted);
+    font-size: .9rem;
+    text-decoration: underline;
+}
+.menu-back-link:hover { color: var(--color-primary); }
+
+@media (max-width: 480px) {
+    .menu-hero { padding: 36px 16px 28px; }
+    .menu-hero-logo { width: 76px; height: 76px; }
+}

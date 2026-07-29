@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.portugalplease.com)",
+      "WebFetch(domain:www.comerciocomhistoria.gov.pt)",
+      "Bash(mkdir -p images css js php)",
+      "Bash(cp __TRACKED_VAR__/img_01.jpg images/logo-barril.jpg)",
+      "Bash(cp __TRACKED_VAR__/img_06.jpg images/exterior-fachada.jpg)",
+      "Bash(cp __TRACKED_VAR__/img_08.jpg images/equipa.jpg)",
+      "Bash(cp __TRACKED_VAR__/img_12.jpg images/exterior-historico.jpg)",
+      "Bash(where php *)",
+      "Bash(\"/c/xampp/php/php.exe\" -l index.php)",
+      "Bash(\"/c/xampp/php/php.exe\" -l php/dados.php)",
+      "Bash(\"/c/xampp/php/php.exe\" -l php/enviar_contacto.php)",
+      "Bash(\"/c/xampp/php/php.exe\" -S localhost:8090)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8090/)",
+      "Bash(/c/xampp/php/php.exe -r 'require '\\\\''php/dados.php'\\\\''; echo count\\($galeria\\) . '\\\\'' fotos na galeria'\\\\'' . PHP_EOL;')",
+      "Bash(cp \"/c/Users/berna/Desktop/489476273_1219856476807921_3572586565970441377_n.jpg\" \"images/evento-romaria-agonia.jpg\")",
+      "Bash(cp \"/c/Users/berna/Desktop/504380696_1306263908167177_7648558672424769103_n.jpg\" \"images/prato-sapateira-gambas.jpg\")",
+      "Bash(\"/c/xampp/php/php.exe\" -l css/style.css)",
+      "mcp__visualize__show_widget",
+      "Read(//c/xampp/php/**)",
+      "Bash(\"/c/xampp/php/php.exe\" -d extension=gd -r \"var_dump\\(extension_loaded\\('gd'\\), gd_info\\(\\)\\);\")",
+      "Bash(cat)",
+      "Bash(\"/c/xampp/php/php.exe\" -d extension=gd /tmp/round_favicon.php \"/c/Users/berna/Desktop/Casa Primavera Taberna Soares/images/logo-barril.jpg\" \"/c/Users/berna/Desktop/Casa Primavera Taberna Soares/images/favicon.png\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download} bytes\\\\n\" http://localhost:8090/images/favicon.png)",
+      "Bash(\"/c/xampp/php/php.exe\" -d extension=gd /tmp/resize_favicon.php \"/c/Users/berna/Desktop/Casa Primavera Taberna Soares/images/favicon.png\" \"/c/Users/berna/Desktop/Casa Primavera Taberna Soares/images/favicon.png\")",
+      "Bash(rm -f /tmp/resize_favicon.php)",
+      "Bash(\"/c/xampp/php/php.exe\" -l ementa.php)",
+      "Bash(curl -s http://localhost:8090/)"
+    ]
+  }
+}
