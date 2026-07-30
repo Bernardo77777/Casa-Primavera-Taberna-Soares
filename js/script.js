@@ -127,6 +127,19 @@ document.addEventListener('DOMContentLoaded', function () {
         applyLang(localStorage.getItem('menuLang') || 'pt');
     }
 
+    /* ===== Beer taps ===== */
+    document.querySelectorAll('.beer-tap').forEach(function (tap) {
+        function pour() {
+            if (tap.classList.contains('is-pouring')) return;
+            tap.classList.add('is-pouring');
+            setTimeout(function () { tap.classList.remove('is-pouring'); }, 2400);
+        }
+        tap.addEventListener('click', pour);
+        tap.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pour(); }
+        });
+    });
+
     /* ===== Gallery show more/less ===== */
     var galleryToggle = document.getElementById('galleryToggle');
     var galleryGrid = document.getElementById('galleryGrid');
