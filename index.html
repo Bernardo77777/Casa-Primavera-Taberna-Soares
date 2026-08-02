@@ -554,6 +554,10 @@
             </div>
             <div class="split-text reveal">
                 <h2>Horários</h2>
+                <div class="open-status" id="openStatus" data-horarios="[{&quot;dia&quot;:&quot;Segunda-feira&quot;,&quot;horas&quot;:&quot;12:00\u201315:00 e 17:00\u201322:00&quot;},{&quot;dia&quot;:&quot;Ter\u00e7a-feira&quot;,&quot;horas&quot;:&quot;12:00\u201315:00&quot;},{&quot;dia&quot;:&quot;Quarta-feira&quot;,&quot;horas&quot;:&quot;12:00\u201315:00 e 17:00\u201322:00&quot;},{&quot;dia&quot;:&quot;Quinta-feira&quot;,&quot;horas&quot;:&quot;12:00\u201315:00 e 17:00\u201322:00&quot;},{&quot;dia&quot;:&quot;Sexta-feira&quot;,&quot;horas&quot;:&quot;12:00\u201315:00 e 17:00\u201322:00&quot;},{&quot;dia&quot;:&quot;S\u00e1bado&quot;,&quot;horas&quot;:&quot;12:00\u201315:00 e 17:00\u201322:00&quot;},{&quot;dia&quot;:&quot;Domingo&quot;,&quot;horas&quot;:&quot;Encerrado&quot;}]">
+                    <span class="status-dot"></span>
+                    <span class="status-text">A verificar horário…</span>
+                </div>
                 <table class="hours-table">
                     <tbody>
                                             <tr class="">
@@ -647,8 +651,11 @@
         <div class="container">
             <h2 class="section-title">Localização</h2>
             <p class="section-subtitle">R. Góis Pinto 59, 4900-356 Viana do Castelo</p>
-            <div class="map-wrapper reveal">
-                <iframe src="https://maps.google.com/maps?q=R.+G%C3%B3is+Pinto+59%2C+4900-356+Viana+do+Castelo&amp;output=embed" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de localização da Casa Primavera - Taberna Soares"></iframe>
+            <div class="map-wrapper reveal" id="mapWrapper" data-map-src="https://maps.google.com/maps?q=R.+G%C3%B3is+Pinto+59%2C+4900-356+Viana+do+Castelo&amp;output=embed" data-map-title="Mapa de localização da Casa Primavera - Taberna Soares">
+                <div class="map-placeholder" id="mapPlaceholder">
+                    <p>Este mapa é fornecido pelo Google Maps e só carrega depois de aceitares cookies.</p>
+                    <button type="button" class="btn btn-primary" id="loadMapBtn">Carregar mapa</button>
+                </div>
             </div>
             <a class="btn btn-outline map-link" href="https://www.google.com/maps/search/?api=1&amp;query=R.+G%C3%B3is+Pinto+59%2C+4900-356+Viana+do+Castelo" target="_blank" rel="noopener">Abrir no Google Maps</a>
         </div>
@@ -660,8 +667,26 @@
     <div class="container footer-inner">
         <p>&copy; 2026 Casa Primavera, Taberna Soares. Todos os direitos reservados.</p>
         <p>R. Góis Pinto 59, 4900-356 Viana do Castelo · <a href="tel:+351258821807">258 821 807</a></p>
+        <p><a href="privacidade.html">Política de Privacidade</a></p>
+        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener" class="complaints-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
+                <line x1="9" y1="7" x2="15" y2="7"/>
+                <line x1="9" y1="11" x2="15" y2="11"/>
+            </svg>
+            <span>Livro de Reclamações Online</span>
+        </a>
     </div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner" aria-hidden="true">
+    <p>Este site usa a Google Fonts e o Google Maps, que podem definir cookies e enviar dados ao Google. <a href="privacidade.html">Saber mais</a>.</p>
+    <div class="cookie-banner-actions">
+        <button type="button" class="btn btn-outline" id="cookieDecline">Recusar</button>
+        <button type="button" class="btn btn-primary" id="cookieAccept">Aceitar</button>
+    </div>
+</div>
 
 <script src="js/script.js"></script>
 </body>

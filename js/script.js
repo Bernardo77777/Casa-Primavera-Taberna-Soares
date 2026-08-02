@@ -15,6 +15,57 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    /* ===== Cookie consent + map loading ===== */
+    var cookieBanner = document.getElementById('cookieBanner');
+    var mapWrapper = document.getElementById('mapWrapper');
+    var mapPlaceholder = document.getElementById('mapPlaceholder');
+    var loadMapBtn = document.getElementById('loadMapBtn');
+    var cookieAccept = document.getElementById('cookieAccept');
+    var cookieDecline = document.getElementById('cookieDecline');
+
+    function loadMap() {
+        if (!mapWrapper || mapWrapper.querySelector('iframe')) return;
+        var iframe = document.createElement('iframe');
+        iframe.src = mapWrapper.getAttribute('data-map-src');
+        iframe.width = '100%';
+        iframe.height = '450';
+        iframe.style.border = '0';
+        iframe.allowFullscreen = true;
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+        iframe.title = mapWrapper.getAttribute('data-map-title') || 'Mapa';
+        if (mapPlaceholder) mapPlaceholder.remove();
+        mapWrapper.appendChild(iframe);
+    }
+
+    var cookieConsent = localStorage.getItem('cookieConsent');
+    if (cookieConsent === 'accepted') {
+        loadMap();
+    } else if (cookieBanner && cookieConsent !== 'declined') {
+        cookieBanner.classList.add('visible');
+    }
+
+    if (loadMapBtn) {
+        loadMapBtn.addEventListener('click', function () {
+            localStorage.setItem('cookieConsent', 'accepted');
+            if (cookieBanner) cookieBanner.classList.remove('visible');
+            loadMap();
+        });
+    }
+    if (cookieAccept) {
+        cookieAccept.addEventListener('click', function () {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.remove('visible');
+            loadMap();
+        });
+    }
+    if (cookieDecline) {
+        cookieDecline.addEventListener('click', function () {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.remove('visible');
+        });
+    }
+
     /* ===== Mobile navigation ===== */
     var navToggle = document.getElementById('navToggle');
     var mainNav = document.getElementById('mainNav');
@@ -231,5 +282,59 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'ArrowLeft') showRelative(-1);
         if (e.key === 'ArrowRight') showRelative(1);
     });
+
+    /* ===== Open now / closed status ===== */
+    var openStatus = document.getElementById('openStatus');
+    if (openStatus) {
+        var diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+
+        function toMinutes(hhmm) {
+            var parts = hhmm.trim().split(':');
+            return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+        }
+
+        function parseRanges(horasStr) {
+            if (!horasStr || horasStr.toLowerCase() === 'encerrado') return [];
+            return horasStr.split(' e ').map(function (range) {
+                var parts = range.split('–');
+                return { start: toMinutes(parts[0]), end: toMinutes(parts[1]) };
+            });
+        }
+
+        function updateOpenStatus() {
+            var horarios = JSON.parse(openStatus.getAttribute('data-horarios'));
+            var now = new Date();
+            var todayName = diasSemana[now.getDay()];
+            var nowMinutes = now.getHours() * 60 + now.getMinutes();
+            var todayEntry = horarios.find(function (h) { return h.dia === todayName; });
+            var isOpen = false;
+
+            if (todayEntry) {
+                var ranges = parseRanges(todayEntry.horas);
+                isOpen = ranges.some(function (r) { return nowMinutes >= r.start && nowMinutes < r.end; });
+            }
+
+            openStatus.classList.toggle('is-open', isOpen);
+            openStatus.classList.toggle('is-closed', !isOpen);
+            openStatus.querySelector('.status-text').textContent = isOpen ? 'Aberto agora' : 'Fechado agora';
+        }
+
+        updateOpenStatus();
+        setInterval(updateOpenStatus, 60000);
+    }
+
+    /* ===== Hero parallax ===== */
+    var heroEl = document.getElementById('hero');
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (heroEl && !prefersReducedMotion) {
+        var updateParallax = function () {
+            var rect = heroEl.getBoundingClientRect();
+            if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                heroEl.style.backgroundPositionY = (window.scrollY * 0.3) + 'px';
+            }
+        };
+        window.addEventListener('scroll', updateParallax, { passive: true });
+        updateParallax();
+    }
 
 });
