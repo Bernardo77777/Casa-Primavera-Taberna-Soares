@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moldura QR Code | Mesa | Casa Primavera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --color-primary: #a8241c;
+        --color-primary-dark: #7d1a14;
+        --color-accent: #c98f2b;
+        --color-dark: #241a14;
+        --color-text: #2d2620;
+        --color-muted: #6b5f54;
+        --color-bg: #fdfaf5;
+        --color-bg-alt: #f4ece0;
+        --color-border: #e4d8c6;
+        --font-heading: 'Playfair Display', Georgia, serif;
+        --font-body: 'Nunito Sans', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: #ddd;
+        font-family: var(--font-body);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding: 24px;
+        justify-content: center;
+    }
+    .card {
+        width: 100mm;
+        min-width: 100mm;
+        height: 148mm;
+        min-height: 148mm;
+        flex-shrink: 0;
+        background: var(--color-bg);
+        border-radius: 18px;
+        border: 2px solid var(--color-accent);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 30px rgba(36, 26, 20, .18);
+    }
+    .card-header {
+        background: var(--color-primary-dark);
+        background-image: radial-gradient(circle at 50% -20%, rgba(201, 143, 43, .28), transparent 60%);
+        padding: 26px 20px 22px;
+        text-align: center;
+    }
+    .card-logo {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid rgba(255, 255, 255, .85);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, .35);
+        margin: 0 auto 10px;
+        display: block;
+    }
+    .card-header h1 {
+        font-family: var(--font-heading);
+        color: #fff;
+        font-size: 1.4rem;
+        margin: 0;
+    }
+    .card-header p {
+        margin: 4px 0 0;
+        color: var(--color-accent);
+        font-size: .68rem;
+        font-weight: 700;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+    }
+    .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 22px 20px;
+        text-align: center;
+    }
+    .card-body h2 {
+        font-family: var(--font-heading);
+        color: var(--color-dark);
+        font-size: 1.3rem;
+        margin: 0;
+    }
+    .card-body .subtitle {
+        color: var(--color-muted);
+        font-size: .82rem;
+        margin: -8px 0 0;
+        max-width: 78%;
+    }
+    .qr-placeholder {
+        width: 55mm;
+        height: 55mm;
+        background: #fff;
+        border: 2.5px dashed var(--color-primary);
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--color-primary);
+    }
+    .qr-placeholder svg { width: 42px; height: 42px; opacity: .55; }
+    .qr-placeholder span {
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        opacity: .7;
+    }
+    .card-body .instruction {
+        color: var(--color-dark);
+        font-weight: 700;
+        font-size: .9rem;
+    }
+    .card-footer {
+        border-top: 1px solid var(--color-border);
+        padding: 12px 20px;
+        text-align: center;
+        color: var(--color-muted);
+        font-size: .72rem;
+        letter-spacing: .04em;
+    }
+    .print-note {
+        width: 100%;
+        text-align: center;
+        font-family: var(--font-body);
+        color: #444;
+        margin-bottom: 8px;
+    }
+    @media print {
+        body { background: #fff; padding: 0; }
+        .print-note { display: none; }
+        .card { box-shadow: none; margin: 0; }
+    }
+</style>
+</head>
+<body>
+
+<p class="print-note">Pré-visualização para impressão: corta pelo contorno do cartão. O quadrado tracejado é o espaço reservado para o QR code (ainda por gerar).</p>
+
+<div class="card">
+    <div class="card-header">
+        <img src="images/logo-barril.jpg" alt="" class="card-logo">
+        <h1>Casa Primavera</h1>
+        <p>Taberna Soares</p>
+    </div>
+    <div class="card-body">
+        <h2>Vê a nossa ementa</h2>
+        <p class="subtitle">Petiscos, marisco, peixe e carne: tudo num só sítio.</p>
+        <div class="qr-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <line x1="14" y1="14" x2="14" y2="21"/>
+                <line x1="21" y1="14" x2="21" y2="21"/>
+                <line x1="17.5" y1="14" x2="17.5" y2="17.5"/>
+                <line x1="14" y1="17.5" x2="21" y2="17.5"/>
+            </svg>
+            <span>QR Code aqui</span>
+        </div>
+        <p class="instruction">Aponta a câmara do telemóvel</p>
+    </div>
+    <div class="card-footer">Ementa disponível em Português e English</div>
+</div>
+
+</body>
+</html>

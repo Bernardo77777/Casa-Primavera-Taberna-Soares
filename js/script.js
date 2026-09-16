@@ -153,30 +153,62 @@ document.addEventListener('DOMContentLoaded', function () {
             tabs.forEach(function (t) { t.classList.remove('active'); });
             panels.forEach(function (p) { p.classList.remove('active'); });
             tab.classList.add('active');
-            document.getElementById(targetId).classList.add('active');
+            var targetEl = document.getElementById(targetId);
+            if (targetEl) targetEl.classList.add('active');
         });
     });
 
-    /* ===== Menu language toggle (PT/EN) ===== */
-    var langToggle = document.getElementById('langToggle');
-    if (langToggle) {
-        function applyLang(lang) {
-            document.querySelectorAll('[data-pt]').forEach(function (el) {
-                var text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-pt');
-                if (text !== null) el.textContent = text;
-            });
-            langToggle.textContent = lang === 'en' ? 'PT' : 'EN';
-            langToggle.setAttribute('data-lang', lang);
-            localStorage.setItem('menuLang', lang);
-        }
+    /* ===== Site & Menu language toggle (PT/EN with Flag SVGs) ===== */
+    var langToggles = document.querySelectorAll('.lang-toggle');
 
-        langToggle.addEventListener('click', function () {
-            var next = langToggle.getAttribute('data-lang') === 'en' ? 'pt' : 'en';
-            applyLang(next);
+    var flagUkSvg = '<svg class="flag-icon" viewBox="0 0 640 480" width="20" height="15" aria-hidden="true"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 245 180L565 0h75v55L415 240l225 185v55h-75L320 300 75 480H0v-55l225-185L0 55V0h75z"/><path fill="#C8102E" d="m424 286 216 178v16h-40L384 302l40-16zM640 0v16L424 194l-16-26L616 0h24zM0 480v-16l216-178 16 26L16 480H0zM0 0v16l216 178-40 16L0 32v-32z"/><path fill="#FFF" d="M240 0v480h160V0H240zM0 160v160h640V160H0z"/><path fill="#C8102E" d="M272 0v480h96V0h-96zM0 192v96h640v-96H0z"/></svg>';
+    var flagPtSvg = '<svg class="flag-icon" viewBox="0 0 640 480" width="20" height="15" aria-hidden="true"><path fill="#006600" d="M0 0h256v480H0z"/><path fill="#ff0000" d="M256 0h384v480H256z"/><circle cx="256" cy="240" r="96" fill="#ffcc00"/><circle cx="256" cy="240" r="80" fill="#fff" stroke="#003399" stroke-width="6"/><path fill="#003399" d="M256 185v110c30 0 50-20 50-55s-20-55-50-55z"/></svg>';
+
+    function applyLang(lang) {
+        document.querySelectorAll('[data-pt]').forEach(function (el) {
+            var text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-pt');
+            if (text !== null) el.textContent = text;
         });
 
-        applyLang(localStorage.getItem('menuLang') || 'pt');
+        var galleryToggle = document.getElementById('galleryToggle');
+        if (galleryToggle) {
+            var isExpanded = galleryToggle.classList.contains('is-expanded');
+            var moreText = lang === 'en' ? (galleryToggle.getAttribute('data-more-en') || 'View more photos (+12)') : (galleryToggle.getAttribute('data-more-pt') || 'Ver mais fotos (+12)');
+            var lessText = lang === 'en' ? (galleryToggle.getAttribute('data-less-en') || 'View less photos') : (galleryToggle.getAttribute('data-less-pt') || 'Ver menos fotos');
+            galleryToggle.setAttribute('data-more-text', moreText);
+            galleryToggle.setAttribute('data-less-text', lessText);
+            galleryToggle.textContent = isExpanded ? lessText : moreText;
+        }
+
+        langToggles.forEach(function (toggle) {
+            toggle.setAttribute('data-lang', lang);
+            if (lang === 'en') {
+                toggle.innerHTML = flagPtSvg + ' <span>PT</span>';
+                toggle.setAttribute('title', 'Mudar para Português');
+            } else {
+                toggle.innerHTML = flagUkSvg + ' <span>EN</span>';
+                toggle.setAttribute('title', 'Switch to English');
+            }
+        });
+
+        document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'pt-PT');
+        localStorage.setItem('siteLang', lang);
+
+        if (typeof window.updateOpenStatus === 'function') {
+            window.updateOpenStatus();
+        }
     }
+
+    langToggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+            var current = toggle.getAttribute('data-lang') || 'pt';
+            var next = current === 'en' ? 'pt' : 'en';
+            applyLang(next);
+        });
+    });
+
+    var initialLang = localStorage.getItem('siteLang') || localStorage.getItem('menuLang') || 'pt';
+    applyLang(initialLang);
 
     /* ===== Beer taps ===== */
     document.querySelectorAll('.beer-tap').forEach(function (tap) {
@@ -296,12 +328,12 @@ document.addEventListener('DOMContentLoaded', function () {
         function parseRanges(horasStr) {
             if (!horasStr || horasStr.toLowerCase() === 'encerrado') return [];
             return horasStr.split(' e ').map(function (range) {
-                var parts = range.split('–');
+                var parts = range.split(/[–-]/);
                 return { start: toMinutes(parts[0]), end: toMinutes(parts[1]) };
             });
         }
 
-        function updateOpenStatus() {
+        window.updateOpenStatus = function () {
             var horarios = JSON.parse(openStatus.getAttribute('data-horarios'));
             var now = new Date();
             var todayName = diasSemana[now.getDay()];
@@ -314,13 +346,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 isOpen = ranges.some(function (r) { return nowMinutes >= r.start && nowMinutes < r.end; });
             }
 
+            var currentLang = localStorage.getItem('siteLang') || 'pt';
+            var openLabel = currentLang === 'en' ? 'Open now' : 'Aberto agora';
+            var closedLabel = currentLang === 'en' ? 'Closed now' : 'Fechado agora';
+
             openStatus.classList.toggle('is-open', isOpen);
             openStatus.classList.toggle('is-closed', !isOpen);
-            openStatus.querySelector('.status-text').textContent = isOpen ? 'Aberto agora' : 'Fechado agora';
-        }
+            openStatus.querySelector('.status-text').textContent = isOpen ? openLabel : closedLabel;
+        };
 
-        updateOpenStatus();
-        setInterval(updateOpenStatus, 60000);
+        window.updateOpenStatus();
+        setInterval(window.updateOpenStatus, 60000);
     }
 
     /* ===== Hero parallax ===== */
