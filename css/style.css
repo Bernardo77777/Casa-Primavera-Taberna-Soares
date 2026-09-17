@@ -595,6 +595,12 @@ h1, h2, h3 { font-family: var(--font-heading); color: var(--color-dark); margin:
 .hours-table td:first-child { font-weight: 700; color: var(--color-dark); }
 .hours-table td:last-child { text-align: right; color: var(--color-muted); }
 .hours-table tr.closed td:last-child { color: var(--color-primary); font-weight: 700; }
+.hours-note {
+    margin-top: 1.2em;
+    font-size: .88rem;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+}
 
 /* ===== Contact ===== */
 .contactos-title { margin-bottom: 1em; }
