@@ -1,4 +1,9 @@
 {
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/qr-mesa(.*)", "destination": "/", "permanent": false },
+    { "source": "/qr-mesa-pequeno(.*)", "destination": "/", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*)",

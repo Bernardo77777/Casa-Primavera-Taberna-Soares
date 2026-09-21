@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
-Sitemap: https://casaprimavera.pt/sitemap.xml
+Sitemap: https://www.tabernasoares.com/sitemap.xml
