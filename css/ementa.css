@@ -118,3 +118,10 @@ body.menu-page {
     .menu-hero { padding: 36px 16px 28px; }
     .menu-hero-logo { width: 76px; height: 76px; }
 }
+
+@media (max-height: 520px) and (orientation: landscape) {
+    .menu-hero { padding: 20px 16px 16px; }
+    .menu-hero-logo { width: 60px; height: 60px; margin-bottom: 8px; }
+    .menu-hero-title { font-size: 1.5rem; }
+    .lang-toggle { top: 10px; right: 12px; padding: 4px 10px; font-size: 0.75rem; }
+}
