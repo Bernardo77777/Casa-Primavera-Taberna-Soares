@@ -36,26 +36,31 @@
     }
     .tag {
         width: 66mm;
-        height: 70mm;
+        height: 78mm;
         min-width: 66mm;
-        min-height: 70mm;
+        min-height: 78mm;
         flex-shrink: 0;
         background: #fdfaf5;
-        border: 0.7mm solid var(--color-primary);
+        border: 0.8mm solid var(--color-accent);
         border-radius: 8mm;
-        padding: 3.5mm 3mm;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 2.5mm;
         text-align: center;
         box-shadow: 0 4px 14px rgba(36, 26, 20, .15);
+    }
+    .tag-header {
+        width: 100%;
+        background: var(--color-primary-dark);
+        background-image: radial-gradient(circle at 50% -20%, rgba(201, 143, 43, .3), transparent 60%);
+        padding: 3.8mm 2mm 3mm;
+        text-align: center;
     }
     .tag-name {
         font-family: var(--font-heading);
         font-weight: 700;
-        color: var(--color-dark);
+        color: #fff;
         font-size: 1.05rem;
         line-height: 1.1;
         margin: 0;
@@ -65,22 +70,31 @@
         font-family: var(--font-body);
         font-weight: 700;
         font-size: .52rem;
-        letter-spacing: .18em;
+        letter-spacing: .2em;
         text-transform: uppercase;
-        color: var(--color-primary);
-        margin-top: 3px;
+        color: var(--color-accent);
+        margin-top: 2px;
+    }
+    .tag-body {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5mm;
+        padding: 1.5mm 2mm 2mm;
     }
     .qr-placeholder {
         width: 42mm;
         height: 42mm;
-        margin-top: 3mm;
         background: #fff;
         border: 1.5px solid var(--color-primary);
         border-radius: 4mm;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 4px;
+        padding: 3px;
         box-shadow: 0 2px 6px rgba(36, 26, 20, .06);
     }
     .qr-code-img {
@@ -109,46 +123,70 @@
 
 <div class="sheet">
     <div class="tag">
-        <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        <div class="qr-placeholder">
-            <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+        <div class="tag-header">
+            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
         </div>
-        <p class="tag-caption">Vê a nossa ementa</p>
+        <div class="tag-body">
+            <div class="qr-placeholder">
+                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+            </div>
+            <p class="tag-caption">Vê a nossa ementa</p>
+        </div>
     </div>
     <div class="tag">
-        <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        <div class="qr-placeholder">
-            <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+        <div class="tag-header">
+            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
         </div>
-        <p class="tag-caption">Vê a nossa ementa</p>
+        <div class="tag-body">
+            <div class="qr-placeholder">
+                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+            </div>
+            <p class="tag-caption">Vê a nossa ementa</p>
+        </div>
     </div>
     <div class="tag">
-        <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        <div class="qr-placeholder">
-            <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+        <div class="tag-header">
+            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
         </div>
-        <p class="tag-caption">Vê a nossa ementa</p>
+        <div class="tag-body">
+            <div class="qr-placeholder">
+                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+            </div>
+            <p class="tag-caption">Vê a nossa ementa</p>
+        </div>
     </div>
     <div class="tag">
-        <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        <div class="qr-placeholder">
-            <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+        <div class="tag-header">
+            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
         </div>
-        <p class="tag-caption">Vê a nossa ementa</p>
+        <div class="tag-body">
+            <div class="qr-placeholder">
+                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+            </div>
+            <p class="tag-caption">Vê a nossa ementa</p>
+        </div>
     </div>
     <div class="tag">
-        <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        <div class="qr-placeholder">
-            <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+        <div class="tag-header">
+            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
         </div>
-        <p class="tag-caption">Vê a nossa ementa</p>
+        <div class="tag-body">
+            <div class="qr-placeholder">
+                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+            </div>
+            <p class="tag-caption">Vê a nossa ementa</p>
+        </div>
     </div>
     <div class="tag">
-        <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        <div class="qr-placeholder">
-            <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+        <div class="tag-header">
+            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
         </div>
-        <p class="tag-caption">Vê a nossa ementa</p>
+        <div class="tag-body">
+            <div class="qr-placeholder">
+                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
+            </div>
+            <p class="tag-caption">Vê a nossa ementa</p>
+        </div>
     </div>
 </div>
 
