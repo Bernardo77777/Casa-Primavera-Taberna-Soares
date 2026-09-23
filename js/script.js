@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var galleryToggle = document.getElementById('galleryToggle');
         if (galleryToggle) {
             var isExpanded = galleryToggle.classList.contains('is-expanded');
-            var moreText = lang === 'en' ? (galleryToggle.getAttribute('data-more-en') || 'View more photos (+12)') : (galleryToggle.getAttribute('data-more-pt') || 'Ver mais fotos (+12)');
+            var moreText = lang === 'en' ? (galleryToggle.getAttribute('data-more-en') || 'View more photos (+17)') : (galleryToggle.getAttribute('data-more-pt') || 'Ver mais fotos (+17)');
             var lessText = lang === 'en' ? (galleryToggle.getAttribute('data-less-en') || 'View less photos') : (galleryToggle.getAttribute('data-less-pt') || 'Ver menos fotos');
             galleryToggle.setAttribute('data-more-text', moreText);
             galleryToggle.setAttribute('data-less-text', lessText);
