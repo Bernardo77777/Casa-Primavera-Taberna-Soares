@@ -26,6 +26,8 @@
 
 <!-- Favicon & Mobile Icons -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -37,48 +39,92 @@
 <link rel="stylesheet" href="css/style.css">
 <noscript><style>.page-loader { display: none !important; }</style></noscript>
 
-<!-- Schema.org JSON-LD Structured Data for Restaurant -->
+<!-- Schema.org JSON-LD Structured Data for Restaurant & Google Sitelinks -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Casa Primavera - Taberna Soares",
-  "url": "https://www.tabernasoares.com",
-  "image": "images/interior-sala.jpg",
-  "telephone": "+351258821807",
-  "email": "tabernasoares.casaprimavera@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "R. Góis Pinto 59",
-    "addressLocality": "Viana do Castelo",
-    "postalCode": "4900-356",
-    "addressCountry": "PT"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 41.6918,
-    "longitude": -8.8344
-  },
-  "servesCuisine": ["Portuguese", "Seafood", "Tapas"],
-  "priceRange": "€€",
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "12:00",
-      "closes": "15:00"
+      "@type": "Restaurant",
+      "name": "Casa Primavera - Taberna Soares",
+      "url": "https://www.tabernasoares.com",
+      "image": "https://www.tabernasoares.com/images/interior-sala.jpg",
+      "telephone": "+351258821807",
+      "email": "tabernasoares.casaprimavera@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. Góis Pinto 59",
+        "addressLocality": "Viana do Castelo",
+        "postalCode": "4900-356",
+        "addressCountry": "PT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.6918,
+        "longitude": -8.8344
+      },
+      "servesCuisine": ["Portuguese", "Seafood", "Tapas"],
+      "priceRange": "€€",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "12:00",
+          "closes": "15:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "17:30",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Tuesday",
+          "opens": "12:00",
+          "closes": "15:00"
+        }
+      ]
     },
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "17:30",
-      "closes": "22:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Tuesday",
-      "opens": "12:00",
-      "closes": "15:00"
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Ementa",
+          "description": "Consulta a ementa completa: petiscos, marisco fresco, peixe grelhado e carnes.",
+          "url": "https://www.tabernasoares.com/ementa"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Sobre Nós",
+          "description": "Tasca tradicional na Ribeira de Viana do Castelo desde 1940.",
+          "url": "https://www.tabernasoares.com/#sobre"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Horários",
+          "description": "Horário de funcionamento e dias de fecho da Taberna Soares.",
+          "url": "https://www.tabernasoares.com/#horarios"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Contactos",
+          "description": "Telefone e contactos para reservas na Casa Primavera.",
+          "url": "https://www.tabernasoares.com/#contactos"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Localização",
+          "description": "Como chegar à Casa Primavera na Ribeira de Viana do Castelo.",
+          "url": "https://www.tabernasoares.com/#localizacao"
+        }
+      ]
     }
   ]
 }

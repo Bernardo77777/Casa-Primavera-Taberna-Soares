@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moldura QR Code | Mesas (pequeno) | Casa Primavera</title>
+<title>Moldura QR Code | Cartão Único | Casa Primavera</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -22,17 +22,21 @@
         background: #ddd;
         font-family: var(--font-body);
         padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
     }
     .print-note {
         text-align: center;
         color: #444;
         margin: 0 0 20px;
     }
-    .sheet {
-        display: grid;
-        grid-template-columns: repeat(2, 80mm);
-        gap: 8mm 12mm;
+    .single-wrapper {
+        display: flex;
         justify-content: center;
+        align-items: center;
     }
     .tag {
         width: 80mm;
@@ -41,14 +45,14 @@
         min-height: 95mm;
         flex-shrink: 0;
         background: #fdfaf5;
-        border: 0.9mm solid var(--color-accent);
+        border: 5.9mm solid var(--color-accent);
         border-radius: 9mm;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        box-shadow: 0 4px 14px rgba(36, 26, 20, .15);
+        box-shadow: 0 8px 24px rgba(36, 26, 20, .2);
     }
     .tag-header {
         width: 100%;
@@ -110,73 +114,17 @@
         letter-spacing: .03em;
     }
     @media print {
-        body { background: #fff; padding: 0; }
+        body { background: #fff; padding: 0; min-height: auto; }
         .print-note { display: none; }
-        .sheet { gap: 6mm; }
         .tag { box-shadow: none; }
     }
 </style>
 </head>
 <body>
 
-<p class="print-note">Folha de Cartões Pequenos para Impressão (6 por folha). Corta cada cartão pelo contorno.</p>
+<p class="print-note">Cartão de Mesa Único (80mm x 95mm). Borda Dourada Espessa (+0,5cm). Imprime ou corta pelo contorno.</p>
 
-<div class="sheet">
-    <div class="tag">
-        <div class="tag-header">
-            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        </div>
-        <div class="tag-body">
-            <div class="qr-placeholder">
-                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
-            </div>
-            <p class="tag-caption">Vê a nossa ementa</p>
-        </div>
-    </div>
-    <div class="tag">
-        <div class="tag-header">
-            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        </div>
-        <div class="tag-body">
-            <div class="qr-placeholder">
-                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
-            </div>
-            <p class="tag-caption">Vê a nossa ementa</p>
-        </div>
-    </div>
-    <div class="tag">
-        <div class="tag-header">
-            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        </div>
-        <div class="tag-body">
-            <div class="qr-placeholder">
-                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
-            </div>
-            <p class="tag-caption">Vê a nossa ementa</p>
-        </div>
-    </div>
-    <div class="tag">
-        <div class="tag-header">
-            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        </div>
-        <div class="tag-body">
-            <div class="qr-placeholder">
-                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
-            </div>
-            <p class="tag-caption">Vê a nossa ementa</p>
-        </div>
-    </div>
-    <div class="tag">
-        <div class="tag-header">
-            <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
-        </div>
-        <div class="tag-body">
-            <div class="qr-placeholder">
-                <img src="images/qr-code.svg" alt="QR Code www.tabernasoares.com" class="qr-code-img">
-            </div>
-            <p class="tag-caption">Vê a nossa ementa</p>
-        </div>
-    </div>
+<div class="single-wrapper">
     <div class="tag">
         <div class="tag-header">
             <p class="tag-name">Casa Primavera<small>Taberna Soares</small></p>
