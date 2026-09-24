@@ -10,19 +10,31 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#7d1a14">
 
+<!-- SEO, Geotargeting & AI Search Optimization -->
+<link rel="canonical" href="https://www.tabernasoares.com/">
+<link rel="alternate" hreflang="pt-PT" href="https://www.tabernasoares.com/">
+<link rel="alternate" hreflang="x-default" href="https://www.tabernasoares.com/">
+
+<meta name="geo.region" content="PT-16">
+<meta name="geo.placename" content="Viana do Castelo, Portugal">
+<meta name="geo.position" content="41.6918;-8.8344">
+<meta name="ICBM" content="41.6918, -8.8344">
+
 <!-- Open Graph / Facebook / WhatsApp -->
-<meta property="og:type" content="website">
+<meta property="og:type" content="restaurant">
+<meta property="og:url" content="https://www.tabernasoares.com/">
 <meta property="og:title" content="Casa Primavera, Taberna Soares | Restaurante em Viana do Castelo">
 <meta property="og:description" content="Tasca tradicional na Ribeira de Viana do Castelo, especialista em petiscos, marisco e peixe fresco desde 1940.">
-<meta property="og:image" content="images/interior-sala.jpg">
+<meta property="og:image" content="https://www.tabernasoares.com/images/interior-sala.jpg">
 <meta property="og:locale" content="pt_PT">
 <meta property="og:site_name" content="Casa Primavera - Taberna Soares">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.tabernasoares.com/">
 <meta name="twitter:title" content="Casa Primavera, Taberna Soares | Restaurante em Viana do Castelo">
 <meta name="twitter:description" content="Tasca tradicional na Ribeira de Viana do Castelo, especialista em petiscos, marisco e peixe fresco desde 1940.">
-<meta name="twitter:image" content="images/interior-sala.jpg">
+<meta name="twitter:image" content="https://www.tabernasoares.com/images/interior-sala.jpg">
 
 <!-- Favicon & Mobile Icons -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -39,18 +51,22 @@
 <link rel="stylesheet" href="css/style.css">
 <noscript><style>.page-loader { display: none !important; }</style></noscript>
 
-<!-- Schema.org JSON-LD Structured Data for Restaurant & Google Sitelinks -->
+<!-- Schema.org JSON-LD Structured Data for Google Local SEO & AI Search Engines (Gemini, ChatGPT, Perplexity) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Restaurant",
+      "@id": "https://www.tabernasoares.com/#restaurant",
       "name": "Casa Primavera - Taberna Soares",
+      "legalName": "Casa Primavera | Taberna Soares",
       "url": "https://www.tabernasoares.com",
+      "menu": "https://www.tabernasoares.com/ementa",
       "image": "https://www.tabernasoares.com/images/interior-sala.jpg",
       "telephone": "+351258821807",
       "email": "tabernasoares.casaprimavera@gmail.com",
+      "description": "Tasca e restaurante tradicional na Ribeira de Viana do Castelo desde 1940. Especialidade em petiscos minhotos, marisco fresco, peixe grelhado, bacalhau e pratos de carne.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "R. Góis Pinto 59",
@@ -63,8 +79,42 @@
         "latitude": 41.6918,
         "longitude": -8.8344
       },
-      "servesCuisine": ["Portuguese", "Seafood", "Tapas"],
+      "hasMap": "https://maps.google.com/?q=41.690926,-8.833636",
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Viana do Castelo"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Minho"
+        }
+      ],
+      "servesCuisine": ["Portuguese", "Seafood", "Tapas", "Mediterranean"],
       "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Debit Card, MB Way",
+      "knowsAbout": [
+        "Gastronomia Minhota",
+        "Petiscos Tradicionais",
+        "Marisco Fresco",
+        "Peixe Grelhado",
+        "Bacalhau à Casa",
+        "Vinho Verde",
+        "Ribeira de Viana do Castelo"
+      ],
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Esplanada Exterior",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Ambiente Tradicional",
+          "value": true
+        }
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
